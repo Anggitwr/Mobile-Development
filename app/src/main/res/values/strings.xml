@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Mobile Development</string>
+    <string name="txt_login">Log in</string>
+    <string name="hint_email">Email</string>
+    <string name="password_error">password have to 6 character</string>
+    <string name="hint_password">Password</string>
+    <string name="signupnow">not an account? sign up now</string>
+    <string name="btnlogin">Login</string>
+    <string name="continuee">or continue with</string>
+    <string name="iv_google">image google</string>
+    <string name="hint_name">name</string>
+    <string name="btnsignup">sign up</string>
+    <string name="insert">Insert your picture</string>
+    <string name="btn_galeri">Galeri</string>
+    <string name="btn_kamera">kamera</string>
+    <string name="i_setting">setting</string>
+    <string name="tv_description">Convert text to speech</string>
+    <string name="name_app">Mag It</string>
+    <string name="btn_download">downloaddfgsdfgsdfgsd</string>
 </resources>
