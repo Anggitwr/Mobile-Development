@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/bg_btn_addfile.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/bg_btn_kamera.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/bg_btn_login.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/bg_btn_play.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/bg_coba.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/bg_insert_image.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1245" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Bangkit/AndroidIntermediate/Mobile-Development/app/src/main/res/layout/activity_on_boarding.xml" value="0.22826086956521738" />
         <entry key="..\:/Project/Bangkit/Android/Capstone Project/MobileDevelopment/app/src/main/res/drawable-v24/bg_btn_addfile.xml" value="0.2205" />
         <entry key="..\:/Project/Bangkit/Android/Capstone Project/MobileDevelopment/app/src/main/res/drawable/bg_btn_addfile.xml" value="0.2205" />
         <entry key="..\:/Project/Bangkit/Android/Capstone Project/MobileDevelopment/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2205" />

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.OnBoardingActivity">
+
+
+    <TextView
+        android:id="@+id/tvMagit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/name_app"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/blue_700"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSlogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_description"
+        app:layout_constraintEnd_toEndOf="@+id/tvMagit"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/tvMagit"
+        app:layout_constraintTop_toBottomOf="@+id/tvMagit" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="165dp"
+        android:layout_height="174dp"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSlogan"
+        app:srcCompat="@drawable/magit"
+        android:contentDescription="@string/mag_it_logo_desc" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="266dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="16dp"
+        app:cornerRadius="10dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/log_in"
+        android:textColor="@color/mtrl_textinput_default_box_stroke_color"
+        android:textSize="16sp"
+        app:strokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        app:strokeWidth="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="266dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="120dp"
+        app:cornerRadius="10dp"
+        android:backgroundTint="@color/mtrl_textinput_default_box_stroke_color"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/loginButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

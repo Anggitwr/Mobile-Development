@@ -17,4 +17,7 @@
     <string name="tv_description">Convert text to speech</string>
     <string name="name_app">Mag It</string>
     <string name="btn_download">downloaddfgsdfgsdfgsd</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="mag_it_logo_desc">Mag-it Logo</string>
 </resources>
