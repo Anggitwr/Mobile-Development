@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,15 +8,24 @@
         android:id="@+id/txt_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
-        android:text="@string/txt_login"
-        android:textSize="24sp"
+        android:layout_marginTop="156dp"
         android:fontFamily="@font/poppins_bold"
+        android:text="@string/txt_login"
         android:textColor="@color/blue_700"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_magit"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/magit"
+        app:layout_constraintEnd_toEndOf="@+id/txt_login"
+        app:layout_constraintStart_toStartOf="@+id/txt_login"
+        app:layout_constraintTop_toBottomOf="@+id/txt_login" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
@@ -34,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_login">
+        app:layout_constraintTop_toBottomOf="@+id/iv_magit">
 
         <com.c22ps129.mobiledevelopment.ui.customview.EditTextEmail
             android:id="@+id/et_email"
@@ -79,6 +87,7 @@
         android:layout_marginTop="52dp"
         android:background="@drawable/bg_btn_login"
         android:text="@string/btnlogin"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
