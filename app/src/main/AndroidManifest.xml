@@ -10,10 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileDevelopment">
         <activity
-            android:name=".ui.CobaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity2"
+            android:name=".ui.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.signup.SignupActivity"
