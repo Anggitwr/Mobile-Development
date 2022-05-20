@@ -21,4 +21,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="mag_it_logo_desc">Mag-it Logo</string>
     <string name="txt_signup">Sign up</string>
+    <string name="i_home">home</string>
+    <string name="i_scan">scan</string>
+    <string name="i_profile">profile</string>
 </resources>
