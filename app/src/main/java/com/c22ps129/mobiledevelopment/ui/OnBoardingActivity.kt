@@ -2,6 +2,7 @@ package com.c22ps129.mobiledevelopment.ui
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,8 @@ import com.c22ps129.mobiledevelopment.R
 import com.c22ps129.mobiledevelopment.databinding.ActivityMainBinding
 import com.c22ps129.mobiledevelopment.databinding.ActivityOnBoardingBinding
 import com.c22ps129.mobiledevelopment.ui.customview.EditTextPassword
+import com.c22ps129.mobiledevelopment.ui.login.LoginActivity
+import com.c22ps129.mobiledevelopment.ui.signup.SignupActivity
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -25,6 +28,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         setupView()
         playAnimation()
+        action()
     }
 
     private fun setupView() {
@@ -57,6 +61,17 @@ class OnBoardingActivity : AppCompatActivity() {
             startDelay = 500
             start()
         }
+    }
+    private fun action(){
 
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSignUp.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
