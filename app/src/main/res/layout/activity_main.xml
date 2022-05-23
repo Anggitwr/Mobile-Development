@@ -39,7 +39,6 @@
         android:text="@string/tv_description"
         android:textColor="@color/blue_700"
         android:textSize="16dp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,6 +121,7 @@
         android:background="@drawable/bg_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        app:navGraph="@navigation/bottom_nav"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
