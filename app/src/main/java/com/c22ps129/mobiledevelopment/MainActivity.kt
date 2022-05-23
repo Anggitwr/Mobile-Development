@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 //        navView.setupWithNavController(navController)
     }
 
-
     private fun action(){
 
     }
