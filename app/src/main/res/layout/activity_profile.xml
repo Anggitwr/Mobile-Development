@@ -68,4 +68,13 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu"
+        android:layout_margin="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
