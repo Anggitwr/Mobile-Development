@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/tvMagit"
+        android:alpha="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -24,6 +25,7 @@
 
     <TextView
         android:id="@+id/tvSlogan"
+        android:alpha="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -35,9 +37,10 @@
 
     <ImageView
         android:id="@+id/imageView"
+        android:alpha="0"
         android:layout_width="165dp"
         android:layout_height="174dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSlogan"
@@ -45,36 +48,38 @@
         android:contentDescription="@string/mag_it_logo_desc" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/btnSignUp"
+        android:alpha="0"
         android:layout_width="266dp"
         android:layout_height="49dp"
         android:layout_marginBottom="16dp"
         app:cornerRadius="10dp"
         android:backgroundTint="@color/white"
-        android:text="@string/log_in"
+        android:text="@string/sign_up"
         android:textColor="@color/mtrl_textinput_default_box_stroke_color"
         android:textSize="16sp"
         app:strokeColor="@color/mtrl_textinput_default_box_stroke_color"
         app:strokeWidth="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnLogin"
+        android:alpha="0"
         android:layout_width="266dp"
         android:layout_height="49dp"
         android:layout_marginBottom="120dp"
         app:cornerRadius="10dp"
         android:backgroundTint="@color/mtrl_textinput_default_box_stroke_color"
-        android:text="@string/sign_up"
+        android:text="@string/btnlogin"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/loginButton" />
+        app:layout_constraintStart_toStartOf="@+id/btnSignUp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
