@@ -5,8 +5,10 @@ import android.graphics.Canvas
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.Patterns
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import com.c22ps129.mobiledevelopment.R
 
 class EditTextEmail: AppCompatEditText {
         constructor(context: Context) : super(context) {
@@ -36,7 +38,9 @@ class EditTextEmail: AppCompatEditText {
                 }
 
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    //
+                    if (!Patterns.EMAIL_ADDRESS.matcher(s).matches()) {
+                        error = context.getString(R.string.emailError)
+                    }
                 }
 
                 override fun afterTextChanged(s: Editable) {

@@ -24,4 +24,5 @@
     <string name="i_home">home</string>
     <string name="i_scan">scan</string>
     <string name="i_profile">profile</string>
+    <string name="emailError">Email format invalid</string>
 </resources>

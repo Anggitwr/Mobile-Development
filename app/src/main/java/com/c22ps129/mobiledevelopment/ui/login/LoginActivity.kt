@@ -8,11 +8,13 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import com.c22ps129.mobiledevelopment.databinding.ActivityLoginBinding
 import com.c22ps129.mobiledevelopment.ui.ProfileActivity
+import com.c22ps129.mobiledevelopment.ui.customview.EditTextPassword
 import com.c22ps129.mobiledevelopment.ui.signup.SignupActivity
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var passwordAlert: EditTextPassword
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
+        passwordAlert = binding.etPassword
     }
 
     private fun setupView() {
