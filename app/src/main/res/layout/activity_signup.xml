@@ -30,6 +30,33 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_signup" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name"
+        style="@style/TextInputLayoutStyleq"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
+
+        <com.c22ps129.mobiledevelopment.ui.customview.EditTextEmail
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/hint_name"
+            android:inputType="textEmailAddress"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
         style="@style/TextInputLayoutStyleq"
         android:layout_width="0dp"
@@ -74,33 +101,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/hint_password"
-            android:inputType="textEmailAddress"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_name"
-        style="@style/TextInputLayoutStyleq"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
-
-        <com.c22ps129.mobiledevelopment.ui.customview.EditTextEmail
-            android:id="@+id/et_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/hint_name"
             android:inputType="textEmailAddress"
             android:paddingTop="15dp"
             android:paddingBottom="15dp" />
