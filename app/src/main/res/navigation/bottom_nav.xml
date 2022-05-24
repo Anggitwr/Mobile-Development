@@ -10,5 +10,10 @@
         android:name="com.c22ps129.mobiledevelopment.ui.ProfileActivity"
         android:label="@string/i_profile"
         tools:layout="@layout/activity_profile" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.c22ps129.mobiledevelopment.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 
 </navigation>
