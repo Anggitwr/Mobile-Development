@@ -25,16 +25,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         action()
 
-//        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
-//
-//        val navController = findNavController(R.id.bottom_nav)
-//
-//        val appBarConfiguration = AppBarConfiguration.Builder(
-//            R.id.nav_profile
-//        ).build()
-//
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navView.setupWithNavController(navController)
     }
 
     private fun action(){
@@ -44,7 +34,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.profile -> {
                     val intent = Intent(this, ProfileActivity::class.java)
                     startActivity(intent)
-//                    startActivity(Intent(this, ProfileActivity::class.java))
                     false
 
                 }
@@ -53,18 +42,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.menu,menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when(item.itemId){
-//            R.id.profile ->{
-//                startActivity(Intent(this, ProfileActivity::class.java))
-//                true
-//            }
-//            else ->{return super.onOptionsItemSelected(item)}
-//        }
-//    }
 }
