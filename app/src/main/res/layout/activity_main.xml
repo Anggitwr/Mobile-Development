@@ -122,6 +122,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu"
         android:layout_margin="20dp"
-        app:navGraph="@navigation/bottom_nav"/>
+        app:navGraph="@navigation/bottom_nav"
+        app:itemTextColor="@drawable/selector_coloring"
+        app:itemIconTint="@drawable/selector_coloring"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

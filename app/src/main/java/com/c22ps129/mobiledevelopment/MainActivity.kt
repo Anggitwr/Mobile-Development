@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+        action()
 
 //        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 //
@@ -38,20 +39,32 @@ class MainActivity : AppCompatActivity() {
 
     private fun action(){
 
-    }
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.profile -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+//                    startActivity(Intent(this, ProfileActivity::class.java))
+                    false
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            R.id.profile ->{
-                startActivity(Intent(this, ProfileActivity::class.java))
-                true
+                }
+                else -> true
             }
-            else ->{return super.onOptionsItemSelected(item)}
         }
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu,menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when(item.itemId){
+//            R.id.profile ->{
+//                startActivity(Intent(this, ProfileActivity::class.java))
+//                true
+//            }
+//            else ->{return super.onOptionsItemSelected(item)}
+//        }
+//    }
 }
