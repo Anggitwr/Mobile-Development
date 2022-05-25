@@ -1,17 +1,16 @@
 package com.c22ps129.mobiledevelopment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import android.provider.MediaStore
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import com.c22ps129.mobiledevelopment.databinding.ActivityMainBinding
 import com.c22ps129.mobiledevelopment.ui.ProfileActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -34,11 +33,48 @@ class MainActivity : AppCompatActivity() {
                 R.id.profile -> {
                     val intent = Intent(this, ProfileActivity::class.java)
                     startActivity(intent)
+                    true
+                }
+                R.id.scan -> {
+                    startTakePhoto()
                     false
-
                 }
                 else -> true
             }
+        }
+    }
+
+    private fun startTakePhoto() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        intent.resolveActivity(packageManager)
+
+        createCustomTempFile(application).also {
+            val photoURI: Uri = FileProvider.getUriForFile(
+                this@MainActivity,
+                "com.c22ps129.mobiledevelopment",
+                it
+            )
+            currentPhotoPath = it.absolutePath
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            launcherIntentCamera.launch(intent)
+        }
+    }
+
+    private lateinit var currentPhotoPath: String
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == RESULT_OK) {
+            val myFile = File(currentPhotoPath)
+
+            val result =  BitmapFactory.decodeFile(myFile.path)
+//            Silakan gunakan kode ini jika mengalami perubahan rotasi
+//            val result = rotateBitmap(
+//                BitmapFactory.decodeFile(myFile.path),
+//                true
+//            )
+
+            binding.etInputtext.setImageBitmap(result)
         }
     }
 
