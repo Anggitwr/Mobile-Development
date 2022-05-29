@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import com.c22ps129.mobiledevelopment.MainActivity
 import com.c22ps129.mobiledevelopment.databinding.ActivityLoginBinding
 import com.c22ps129.mobiledevelopment.ui.ProfileActivity
 import com.c22ps129.mobiledevelopment.ui.customview.EditTextPassword
@@ -29,6 +30,10 @@ class LoginActivity : AppCompatActivity() {
     private fun action(){
         binding.tvSignup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         passwordAlert = binding.etPassword
