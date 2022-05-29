@@ -1,5 +1,6 @@
 package com.c22ps129.mobiledevelopment
 
+import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
                     startTakePhoto()
                     false
                 }
+                R.id.btn_add -> {
+                    startGallery()
+                    false
+                }
                 else -> true
             }
         }
@@ -60,14 +65,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun startGallery() {
+        val intent = Intent()
+
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
     private lateinit var currentPhotoPath: String
+    private var getFile: File? = null
+
     private val launcherIntentCamera = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode == RESULT_OK) {
-            val myFile = File(currentPhotoPath)
+            getFile = File(currentPhotoPath)
 
-            val result =  BitmapFactory.decodeFile(myFile.path)
+            val result =  BitmapFactory.decodeFile(getFile?.path)
 //            Silakan gunakan kode ini jika mengalami perubahan rotasi
 //            val result = rotateBitmap(
 //                BitmapFactory.decodeFile(myFile.path),
@@ -75,6 +91,19 @@ class MainActivity : AppCompatActivity() {
 //            )
 
             binding.etInputtext.setImageBitmap(result)
+        }
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri = result.data?.data as Uri
+            val myFile = uriToFile(selectedImg, this@MainActivity)
+            val contentResolver: ContentResolver = contentResolver
+            getFile = myFile
+
+            binding.etInputtext.setImageURI(selectedImg)
         }
     }
 
