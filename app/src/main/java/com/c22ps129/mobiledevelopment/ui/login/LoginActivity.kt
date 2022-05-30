@@ -51,4 +51,8 @@ class LoginActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
     }
+
+    private fun login(){
+
+    }
 }

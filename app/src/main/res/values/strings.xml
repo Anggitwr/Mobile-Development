@@ -25,4 +25,6 @@
     <string name="i_scan">scan</string>
     <string name="i_profile">profile</string>
     <string name="emailError">Email format invalid</string>
+    <string name="message_validation">Enter your  %1$s</string>
+    <string name="signup_error">Register Failed</string>
 </resources>
