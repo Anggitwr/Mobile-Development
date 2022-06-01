@@ -7,5 +7,6 @@ data class SignupResponse (
     val success: Boolean,
 
     @field:SerializedName("message")
-    val message: String
+    val message: String,
+
 )

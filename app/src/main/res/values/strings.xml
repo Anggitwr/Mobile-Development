@@ -27,4 +27,6 @@
     <string name="emailError">Email format invalid</string>
     <string name="message_validation">Enter your  %1$s</string>
     <string name="signup_error">Register Failed</string>
+    <string name="success_signup">Success</string>
+    <string name="failedRetrofit">failed signup</string>
 </resources>
