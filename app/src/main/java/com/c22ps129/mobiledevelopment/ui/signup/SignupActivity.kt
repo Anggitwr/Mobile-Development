@@ -1,5 +1,6 @@
 package com.c22ps129.mobiledevelopment.ui.signup
 
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -90,7 +91,7 @@ class SignupActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
                             if (responseBody != null && !responseBody.success) {
-                                signupViewModel.saveUser(User(name, email, false, password))
+                                signupViewModel.saveUser(User(name, email, false))
                                 Toast.makeText(this@SignupActivity, getString(R.string.success_signup), Toast.LENGTH_SHORT).show()
                                 finish()
                             }
@@ -101,69 +102,11 @@ class SignupActivity : AppCompatActivity() {
                     override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
                         Toast.makeText(this@SignupActivity, getString(R.string.failedRetrofit), Toast.LENGTH_SHORT).show()
                     }
-
                 })
             } else {
                 Toast.makeText(this, getString(R.string.sign_up), Toast.LENGTH_SHORT).show()
             }
-//            when{
-//
-//                name.isEmpty() -> {
-//                    binding.etName.error = resources.getString(R.string.message_validation, "name")
-//                }
-//                email.isEmpty() -> {
-//                    binding.etEmail.error = resources.getString(R.string.message_validation, "email")
-//                }
-//                password.isEmpty() -> {
-//                    binding.etPassword.error =
-//                        resources.getString(R.string.message_validation, "password")
-//                } else -> {
-//
-//                signupViewModel.uSignup(name, email, password).observe(this) { result ->
-//                    if (result != null) {
-//                        when (result) {
-//                            is SystemResults.Loading -> {
-//                                showLoading(true)
-//                            }
-//                            is SystemResults.Success -> {
-//                                showLoading(false)
-//                                val user = result.data
-//                                if (user.success) {
-//                                    Toast.makeText(
-//                                        this@SignupActivity,
-//                                        user.message,
-//                                        Toast.LENGTH_SHORT
-//                                    ).show()
-//                                } else {
-//                                    AlertDialog.Builder(this@SignupActivity).apply {
-//                                        setTitle("Yeah!")
-//                                        setMessage("Your account successfully created!")
-//                                        setPositiveButton("Next") { _, _ ->
-//                                            finish()
-//                                        }
-//                                        create()
-//                                        show()
-//                                    }
-//                                }
-//                            }
-//                            is SystemResults.Error -> {
-//                                showLoading(false)
-//                                Toast.makeText(
-//                                    this,
-//                                    resources.getString(R.string.signup_error),
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-//                        }
-//                    }
-//                }
 
-//                }
-//            }
         }
     }
-
-//    private fun showLoading(isLoading: Boolean) {
-//        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-//    }
 }

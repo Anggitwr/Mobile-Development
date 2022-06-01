@@ -20,13 +20,13 @@
             android:name=".ui.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.signup.SignupActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.signup.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".ui.OnBoardingActivity"
