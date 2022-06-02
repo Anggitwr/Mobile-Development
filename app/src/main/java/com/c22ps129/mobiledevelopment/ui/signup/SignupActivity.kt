@@ -2,6 +2,7 @@ package com.c22ps129.mobiledevelopment.ui.signup
 
 import android.app.ProgressDialog.show
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,7 @@ import com.c22ps129.mobiledevelopment.databinding.ActivitySignupBinding
 import com.c22ps129.mobiledevelopment.network.ApiConfig
 import com.c22ps129.mobiledevelopment.response.SignupResponse
 import com.c22ps129.mobiledevelopment.ui.customview.EditTextPassword
+import com.c22ps129.mobiledevelopment.ui.login.LoginActivity
 import com.c22ps129.mobiledevelopment.utils.ViewModelFactory
 import retrofit2.Call
 import retrofit2.Callback
@@ -73,6 +75,10 @@ class SignupActivity : AppCompatActivity() {
     }
     private fun action(){
         passwordAlert = binding.etPassword
+        binding.tvSignup.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun signUp(){
@@ -90,7 +96,7 @@ class SignupActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
-                            if (responseBody != null && !responseBody.success) {
+                            if (responseBody != null && responseBody.success) {
                                 signupViewModel.saveUser(User(name, email, false))
                                 Toast.makeText(this@SignupActivity, getString(R.string.success_signup), Toast.LENGTH_SHORT).show()
                                 finish()
@@ -106,7 +112,6 @@ class SignupActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, getString(R.string.sign_up), Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 }

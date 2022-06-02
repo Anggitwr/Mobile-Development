@@ -3,11 +3,11 @@ package com.c22ps129.mobiledevelopment.ui.login
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -19,7 +19,6 @@ import com.c22ps129.mobiledevelopment.data.UserPreference
 import com.c22ps129.mobiledevelopment.databinding.ActivityLoginBinding
 import com.c22ps129.mobiledevelopment.network.ApiConfig
 import com.c22ps129.mobiledevelopment.response.LoginResponse
-import com.c22ps129.mobiledevelopment.ui.ProfileActivity
 import com.c22ps129.mobiledevelopment.ui.customview.EditTextPassword
 import com.c22ps129.mobiledevelopment.ui.signup.SignupActivity
 import com.c22ps129.mobiledevelopment.utils.ViewModelFactory
@@ -52,10 +51,10 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
-        binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.btnLogin.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//        }
         passwordAlert = binding.etPassword
     }
 
@@ -98,12 +97,12 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
-                            if (responseBody != null && !responseBody.success) {
+                            if (responseBody != null && responseBody.success) {
                                 loginViewModel.login()
                                 loginViewModel.saveUser(
                                     User(
                                         responseBody.message,
-                                    responseBody.token,
+                                        responseBody.token,
                                     isLogin = true))
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -112,7 +111,6 @@ class LoginActivity : AppCompatActivity() {
                             }
                         }
                     }
-
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Toast.makeText(this@LoginActivity, getString(R.string.failedRetrofit), Toast.LENGTH_SHORT).show()
                     }
