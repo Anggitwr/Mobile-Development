@@ -96,7 +96,7 @@ class SignupActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
-                            if (responseBody != null && responseBody.success) {
+                            if (responseBody != null) {
                                 signupViewModel.saveUser(User(name, email, false))
                                 Toast.makeText(this@SignupActivity, getString(R.string.success_signup), Toast.LENGTH_SHORT).show()
                                 finish()

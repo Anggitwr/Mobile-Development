@@ -97,13 +97,13 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
-                            if (responseBody != null && responseBody.success) {
-                                loginViewModel.login()
-                                loginViewModel.saveUser(
-                                    User(
-                                        responseBody.message,
-                                        responseBody.token,
-                                    isLogin = true))
+                            if (responseBody != null) {
+//                                loginViewModel.login()
+//                                loginViewModel.saveUser(
+//                                    User(
+//                                        responseBody.message,
+//                                        responseBody.token,
+//                                    isLogin = true))
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
