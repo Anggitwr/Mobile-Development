@@ -31,4 +31,5 @@
     <string name="failedRetrofit">failed signup</string>
     <string name="et_filllogin">FiIl all blank</string>
     <string name="loginnow">have an account? log in now</string>
+    <string name="btn_logout">log out</string>
 </resources>

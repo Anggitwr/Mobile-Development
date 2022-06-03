@@ -12,7 +12,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.c22ps129.mobiledevelopment.MainActivity
+import com.c22ps129.mobiledevelopment.ui.main.MainActivity
 import com.c22ps129.mobiledevelopment.R
 import com.c22ps129.mobiledevelopment.data.User
 import com.c22ps129.mobiledevelopment.data.UserPreference
@@ -49,12 +49,10 @@ class LoginActivity : AppCompatActivity() {
     private fun action(){
         binding.tvSignup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
+            finish()
         }
-//        binding.btnLogin.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
         passwordAlert = binding.etPassword
     }
 
@@ -98,14 +96,13 @@ class LoginActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
                             if (responseBody != null) {
-//                                loginViewModel.login()
-//                                loginViewModel.saveUser(
-//                                    User(
-//                                        responseBody.message,
-//                                        responseBody.token,
-//                                    isLogin = true))
+                                loginViewModel.login()
+                                loginViewModel.saveUser(
+                                    User(
+                                        responseBody.message,
+                                        responseBody.token,
+                                    isLogin = true))
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                                 finish()
                             }

@@ -12,7 +12,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     fun getUser(): Flow<User> {
         return dataStore.data.map { preferences ->
-
             User(
                 preferences[NAME_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
@@ -21,6 +20,11 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    fun authLogin(): Flow<Boolean>{
+        return dataStore.data.map { preferences ->
+            preferences[STATE_KEY] ?: false
+        }
+    }
     suspend fun saveUser(user: User) {
         dataStore.edit { preferences ->
             preferences[NAME_KEY] = user.name
@@ -34,6 +38,12 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    suspend fun logout() {
+        dataStore.edit { preferences ->
+            preferences[TOKEN_KEY] = ""
+            preferences[STATE_KEY] = false
+        }
+    }
     companion object {
         @Volatile
         private var INSTANCE: UserPreference? = null

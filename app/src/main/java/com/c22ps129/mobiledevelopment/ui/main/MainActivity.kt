@@ -1,6 +1,7 @@
-package com.c22ps129.mobiledevelopment
+package com.c22ps129.mobiledevelopment.ui.main
 
 import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -9,12 +10,25 @@ import android.provider.MediaStore
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
+import com.c22ps129.mobiledevelopment.R
+import com.c22ps129.mobiledevelopment.createCustomTempFile
+import com.c22ps129.mobiledevelopment.data.UserPreference
 import com.c22ps129.mobiledevelopment.databinding.ActivityMainBinding
-import com.c22ps129.mobiledevelopment.ui.ProfileActivity
+import com.c22ps129.mobiledevelopment.ui.OnBoardingActivity
+import com.c22ps129.mobiledevelopment.ui.profile.ProfileActivity
+import com.c22ps129.mobiledevelopment.uriToFile
+import com.c22ps129.mobiledevelopment.utils.ViewModelFactory
 import java.io.File
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,17 +37,45 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        setupViewModel()
         action()
 
     }
 
-    private fun action(){
+    private fun setupViewModel() {
+        mainViewModel = ViewModelProvider(
+            this,
+        ViewModelFactory(UserPreference.getInstance(dataStore))
+        )[MainViewModel::class.java]
+        authMain()
+    }
 
+    private fun authMain(){
+        mainViewModel.auth().observe(this){
+            if (!it){
+                startActivity(Intent(this,OnBoardingActivity::class.java))
+                finish()
+            }
+        }
+//        mainViewModel.getUser().observe(this) { user ->
+//            if (user.isLogin) {
+////                startActivity(Intent(this, MainActivity::class.java))
+//            } else {
+//                startActivity(Intent(this, OnBoardingActivity::class.java))
+////                finish()
+//            }
+//        }
+    }
+
+    private fun action(){
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.profile -> {
                     val intent = Intent(this, ProfileActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
+                    finish()
                     true
                 }
                 R.id.scan -> {
@@ -106,5 +148,4 @@ class MainActivity : AppCompatActivity() {
             binding.etInputtext.setImageURI(selectedImg)
         }
     }
-
 }

@@ -7,12 +7,12 @@
 
     <activity
         android:id="@+id/nav_profile"
-        android:name="com.c22ps129.mobiledevelopment.ui.ProfileActivity"
+        android:name="com.c22ps129.mobiledevelopment.ui.profile.ProfileActivity"
         android:label="@string/i_profile"
         tools:layout="@layout/activity_profile" />
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.c22ps129.mobiledevelopment.MainActivity"
+        android:name="com.c22ps129.mobiledevelopment.ui.main.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 
