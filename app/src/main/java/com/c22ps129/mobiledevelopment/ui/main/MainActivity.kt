@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setupViewModel()
-        action()
 
     }
 
@@ -49,6 +48,9 @@ class MainActivity : AppCompatActivity() {
         ViewModelFactory(UserPreference.getInstance(dataStore))
         )[MainViewModel::class.java]
         authMain()
+        action()
+
+        binding.btnAdd.setOnClickListener { startGallery() }
     }
 
     private fun authMain(){
@@ -80,10 +82,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.scan -> {
                     startTakePhoto()
-                    false
-                }
-                R.id.btn_add -> {
-                    startGallery()
                     false
                 }
                 else -> true
