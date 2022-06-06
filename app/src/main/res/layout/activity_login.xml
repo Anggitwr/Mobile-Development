@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/hint_password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:paddingTop="15dp"
             android:paddingBottom="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
