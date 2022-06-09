@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.speech.tts.TextToSpeech
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -23,10 +25,12 @@ import com.c22ps129.mobiledevelopment.ui.profile.ProfileActivity
 import com.c22ps129.mobiledevelopment.uriToFile
 import com.c22ps129.mobiledevelopment.utils.ViewModelFactory
 import java.io.File
+import java.util.*
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
+    lateinit var tts: TextToSpeech
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
 
@@ -40,6 +44,12 @@ class MainActivity : AppCompatActivity() {
 
         setupViewModel()
 
+        tts = TextToSpeech(applicationContext, TextToSpeech.OnInitListener { status ->
+            if (status != TextToSpeech.ERROR) {
+                tts.language = Locale.US
+            }
+        })
+
     }
 
     private fun setupViewModel() {
@@ -51,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         action()
 
         binding.btnAdd.setOnClickListener { startGallery() }
+        binding.fltPlay.setOnClickListener { starSpeech() }
     }
 
     private fun authMain(){
@@ -112,6 +123,15 @@ class MainActivity : AppCompatActivity() {
         intent.type = "image/*"
         val chooser = Intent.createChooser(intent, "Choose a Picture")
         launcherIntentGallery.launch(chooser)
+    }
+
+    private fun starSpeech() {
+        val toSpeak = binding.etOcr.text.toString()
+        if (toSpeak == "") {
+            Toast.makeText(this, "No Text Inputted", Toast.LENGTH_SHORT).show()
+        } else {
+            tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null)
+        }
     }
 
     private lateinit var currentPhotoPath: String
