@@ -30,6 +30,7 @@ import java.util.*
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
+
     lateinit var tts: TextToSpeech
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
+
 //        mainViewModel.getUser().observe(this) { user ->
 //            if (user.isLogin) {
 ////                startActivity(Intent(this, MainActivity::class.java))
