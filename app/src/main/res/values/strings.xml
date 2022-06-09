@@ -32,4 +32,6 @@
     <string name="et_filllogin">FiIl all blank</string>
     <string name="loginnow">have an account? log in now</string>
     <string name="btn_logout">log out</string>
+    <string name="tv_name">Name</string>
+    <string name="tv_email">Email</string>
 </resources>
