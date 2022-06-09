@@ -30,7 +30,6 @@ import java.util.*
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var tts: TextToSpeech
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                 tts.language = Locale.US
             }
         })
-
     }
 
     private fun setupViewModel() {
