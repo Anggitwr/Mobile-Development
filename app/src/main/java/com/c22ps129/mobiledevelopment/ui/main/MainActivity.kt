@@ -17,12 +17,12 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.c22ps129.mobiledevelopment.R
-import com.c22ps129.mobiledevelopment.createCustomTempFile
+import com.c22ps129.mobiledevelopment.utils.createCustomTempFile
 import com.c22ps129.mobiledevelopment.data.UserPreference
 import com.c22ps129.mobiledevelopment.databinding.ActivityMainBinding
 import com.c22ps129.mobiledevelopment.ui.OnBoardingActivity
 import com.c22ps129.mobiledevelopment.ui.profile.ProfileActivity
-import com.c22ps129.mobiledevelopment.uriToFile
+import com.c22ps129.mobiledevelopment.utils.uriToFile
 import com.c22ps129.mobiledevelopment.utils.ViewModelFactory
 import java.io.File
 import java.util.*
@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         setupViewModel()
 
+        binding.bottomNavigation.selectedItemId = R.id.home
+
         tts = TextToSpeech(applicationContext, TextToSpeech.OnInitListener { status ->
             if (status != TextToSpeech.ERROR) {
                 tts.language = Locale.US
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             this,
         ViewModelFactory(UserPreference.getInstance(dataStore))
         )[MainViewModel::class.java]
-        authMain()
+//        authMain()
         action()
 
         binding.btnAdd.setOnClickListener { startGallery() }
@@ -67,18 +69,10 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.auth().observe(this){
             if (!it){
                 startActivity(Intent(this,OnBoardingActivity::class.java))
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                 finish()
             }
         }
-
-//        mainViewModel.getUser().observe(this) { user ->
-//            if (user.isLogin) {
-////                startActivity(Intent(this, MainActivity::class.java))
-//            } else {
-//                startActivity(Intent(this, OnBoardingActivity::class.java))
-////                finish()
-//            }
-//        }
     }
 
     private fun action(){
@@ -86,8 +80,8 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.profile -> {
                     val intent = Intent(this, ProfileActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
+                    binding.bottomNavigation.selectedItemId = R.id.home
                     finish()
                     true
                 }
@@ -131,6 +125,15 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "No Text Inputted", Toast.LENGTH_SHORT).show()
         } else {
             tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null)
+            var pitch = binding.seekbarPitch.progress.toFloat()/50
+            if (pitch<0.1) pitch = 0.1f
+
+            var speed = binding.seekbarSpeed.progress.toFloat()/50
+            if (speed<0.1) speed = 0.1f
+
+            tts.setPitch(pitch)
+            tts.setSpeechRate(speed)
+            tts.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null)
         }
     }
 

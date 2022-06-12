@@ -72,12 +72,51 @@
         android:id="@+id/flt_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bg_btn_play"
         android:src="@drawable/ic_baseline_play_arrow_24"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="@+id/bottom_navigation"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/bottom_navigation" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="pitch"
+        app:layout_constraintBottom_toTopOf="@+id/seekbar_pitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekbar_pitch"
+        android:layout_width="133dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="speed"
+        app:layout_constraintBottom_toTopOf="@+id/seekbar_speed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekbar_speed"
+        android:layout_width="133dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="@+id/textView_speed" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -87,7 +126,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu"
         android:layout_margin="20dp"
-        app:navGraph="@navigation/bottom_nav"
         app:itemTextColor="@drawable/selector_coloring"
         app:itemIconTint="@drawable/selector_coloring"/>
 

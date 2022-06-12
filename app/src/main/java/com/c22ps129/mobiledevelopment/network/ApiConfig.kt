@@ -1,6 +1,5 @@
 package com.c22ps129.mobiledevelopment.network
 
-import com.c22ps129.mobiledevelopment.BuildConfig
 import com.c22ps129.mobiledevelopment.BuildConfig.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

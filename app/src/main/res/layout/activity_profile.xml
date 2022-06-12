@@ -87,14 +87,4 @@
         app:layout_constraintStart_toStartOf="@+id/et_email"
         app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_bottom_nav"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu"
-        android:layout_margin="20dp"
-        app:itemTextColor="@drawable/selector_coloring"
-        app:itemIconTint="@drawable/selector_coloring"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

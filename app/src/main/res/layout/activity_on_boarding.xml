@@ -49,27 +49,27 @@
 
     <Button
         android:id="@+id/btnSignUp"
-        android:alpha="0"
-        android:layout_width="266dp"
-        android:layout_height="49dp"
+        android:layout_width="258dp"
+        android:layout_height="59dp"
         android:layout_marginBottom="16dp"
-        app:cornerRadius="10dp"
+        android:alpha="0"
         android:backgroundTint="@color/white"
         android:text="@string/sign_up"
         android:textColor="@color/mtrl_textinput_default_box_stroke_color"
         android:textSize="16sp"
-        app:strokeColor="@color/mtrl_textinput_default_box_stroke_color"
-        app:strokeWidth="2dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:strokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        app:strokeWidth="1dp" />
 
     <Button
         android:id="@+id/btnLogin"
         android:alpha="0"
-        android:layout_width="266dp"
-        android:layout_height="49dp"
+        android:layout_width="260dp"
+        android:layout_height="59dp"
         android:layout_marginBottom="120dp"
         app:cornerRadius="10dp"
         android:backgroundTint="@color/mtrl_textinput_default_box_stroke_color"

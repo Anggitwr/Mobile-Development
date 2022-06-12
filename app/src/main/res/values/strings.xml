@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile Development</string>
+    <string name="app_name">Mag It</string>
     <string name="txt_login">Log in</string>
     <string name="hint_email">Email</string>
     <string name="password_error">password have to 6 character</string>
@@ -34,4 +34,5 @@
     <string name="btn_logout">log out</string>
     <string name="tv_name">Name</string>
     <string name="tv_email">Email</string>
+    <string name="profile">Profile</string>
 </resources>

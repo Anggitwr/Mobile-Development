@@ -2,23 +2,31 @@ package com.c22ps129.mobiledevelopment.ui
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.c22ps129.mobiledevelopment.R
-import com.c22ps129.mobiledevelopment.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
+import com.c22ps129.mobiledevelopment.data.UserPreference
 import com.c22ps129.mobiledevelopment.databinding.ActivityOnBoardingBinding
-import com.c22ps129.mobiledevelopment.ui.customview.EditTextPassword
 import com.c22ps129.mobiledevelopment.ui.login.LoginActivity
+import com.c22ps129.mobiledevelopment.ui.main.MainActivity
+import com.c22ps129.mobiledevelopment.ui.main.MainViewModel
 import com.c22ps129.mobiledevelopment.ui.signup.SignupActivity
+import com.c22ps129.mobiledevelopment.utils.ViewModelFactory
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("settings")
 class OnBoardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnBoardingBinding
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +35,7 @@ class OnBoardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupView()
+        setupViewModel()
         playAnimation()
         action()
     }
@@ -77,5 +86,25 @@ class OnBoardingActivity : AppCompatActivity() {
             startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun authMain(){
+        mainViewModel.auth().observe(this){
+            if (it){
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+        }
+    }
+    private fun setupViewModel() {
+        mainViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(UserPreference.getInstance(dataStore))
+        )[MainViewModel::class.java]
+        authMain()
+//        action()
+//
+//        binding.btnAdd.setOnClickListener { startGallery() }
+//        binding.fltPlay.setOnClickListener { starSpeech() }
     }
 }
