@@ -17,13 +17,22 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.c22ps129.mobiledevelopment.R
+import com.c22ps129.mobiledevelopment.data.Ocr
 import com.c22ps129.mobiledevelopment.utils.createCustomTempFile
 import com.c22ps129.mobiledevelopment.data.UserPreference
 import com.c22ps129.mobiledevelopment.databinding.ActivityMainBinding
-import com.c22ps129.mobiledevelopment.ui.OnBoardingActivity
+import com.c22ps129.mobiledevelopment.network.ApiConfig
+import com.c22ps129.mobiledevelopment.response.OcrResponse
 import com.c22ps129.mobiledevelopment.ui.profile.ProfileActivity
 import com.c22ps129.mobiledevelopment.utils.uriToFile
 import com.c22ps129.mobiledevelopment.utils.ViewModelFactory
+import com.c22ps129.mobiledevelopment.utils.reduceFileImage
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.util.*
 
@@ -53,6 +62,38 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun startUpload(){
+
+        if(getFile != null){
+            val file = reduceFileImage(getFile as File)
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part =MultipartBody.Part.createFormData(
+                "photo",
+                file.name,
+                requestImageFile
+            )
+
+            val service = ApiConfig.getApiService2()
+                .uploadImage(imageMultipart)
+            service.enqueue(object : Callback<OcrResponse>{
+                override fun onResponse(call: Call<OcrResponse>, response: Response<OcrResponse>) {
+                    if (response.isSuccessful){
+                        val responseBody = response.body()
+                        if (responseBody != null){
+                            mainViewModel.saveOcr(Ocr(
+                                responseBody.prediction
+                            ))
+                        }
+                    }
+                }
+                override fun onFailure(call: Call<OcrResponse>, t: Throwable) {
+                    Toast.makeText(this@MainActivity, getString(R.string.failedRetrofit), Toast.LENGTH_SHORT).show()
+                }
+
+            })
+        }
+    }
+
     private fun setupViewModel() {
         mainViewModel = ViewModelProvider(
             this,
@@ -63,17 +104,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener { startGallery() }
         binding.fltPlay.setOnClickListener { starSpeech() }
+        binding.btnOcr.setOnClickListener { startUpload() }
     }
 
-    private fun authMain(){
-        mainViewModel.auth().observe(this){
-            if (!it){
-                startActivity(Intent(this,OnBoardingActivity::class.java))
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                finish()
-            }
-        }
-    }
+//    private fun authMain(){
+//        mainViewModel.auth().observe(this){
+//            if (!it){
+//                startActivity(Intent(this,OnBoardingActivity::class.java))
+//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                finish()
+//            }
+//        }
+//    }
+
 
     private fun action(){
         binding.bottomNavigation.setOnItemSelectedListener {

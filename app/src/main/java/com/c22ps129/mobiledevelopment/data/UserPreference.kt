@@ -25,6 +25,13 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[STATE_KEY] ?: false
         }
     }
+
+    suspend fun saveOcr(ocr: Ocr){
+        dataStore.edit { preferences ->
+            preferences[WORD_KEY] = ocr.word.toString()
+        }
+    }
+
     suspend fun saveUser(user: User) {
         dataStore.edit { preferences ->
             preferences[NAME_KEY] = user.name
@@ -51,7 +58,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val NAME_KEY = stringPreferencesKey("name")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val STATE_KEY = booleanPreferencesKey("state")
-        private val PASSWORD = stringPreferencesKey("password")
+        private val WORD_KEY = stringPreferencesKey("word")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {
