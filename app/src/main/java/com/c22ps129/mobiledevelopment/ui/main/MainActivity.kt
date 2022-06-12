@@ -22,6 +22,7 @@ import com.c22ps129.mobiledevelopment.utils.createCustomTempFile
 import com.c22ps129.mobiledevelopment.data.UserPreference
 import com.c22ps129.mobiledevelopment.databinding.ActivityMainBinding
 import com.c22ps129.mobiledevelopment.network.ApiConfig
+import com.c22ps129.mobiledevelopment.response.ListPredict
 import com.c22ps129.mobiledevelopment.response.OcrResponse
 import com.c22ps129.mobiledevelopment.ui.profile.ProfileActivity
 import com.c22ps129.mobiledevelopment.utils.uriToFile
@@ -35,6 +36,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.util.*
+import kotlin.collections.ArrayList
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -63,7 +65,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startUpload(){
-
         if(getFile != null){
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
@@ -80,17 +81,27 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful){
                         val responseBody = response.body()
                         if (responseBody != null){
-                            mainViewModel.saveOcr(Ocr(
-                                responseBody.prediction
-                            ))
+//                            mainViewModel.saveOcr(Ocr(
+//
+//                            ))
                         }
                     }
                 }
+
                 override fun onFailure(call: Call<OcrResponse>, t: Throwable) {
                     Toast.makeText(this@MainActivity, getString(R.string.failedRetrofit), Toast.LENGTH_SHORT).show()
                 }
-
             })
+        }
+    }
+
+    private fun setOcrResponse(items: List<ListPredict>){
+        val listOcr = ArrayList<ListPredict>()
+        for (data in items){
+            val result = ListPredict(
+                data.box,
+                data.text)
+            listOcr.add(result)
         }
     }
 
@@ -99,23 +110,12 @@ class MainActivity : AppCompatActivity() {
             this,
         ViewModelFactory(UserPreference.getInstance(dataStore))
         )[MainViewModel::class.java]
-//        authMain()
         action()
 
         binding.btnAdd.setOnClickListener { startGallery() }
         binding.fltPlay.setOnClickListener { starSpeech() }
         binding.btnOcr.setOnClickListener { startUpload() }
     }
-
-//    private fun authMain(){
-//        mainViewModel.auth().observe(this){
-//            if (!it){
-//                startActivity(Intent(this,OnBoardingActivity::class.java))
-//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                finish()
-//            }
-//        }
-//    }
 
 
     private fun action(){

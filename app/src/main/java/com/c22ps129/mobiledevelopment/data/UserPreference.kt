@@ -1,5 +1,6 @@
 package com.c22ps129.mobiledevelopment.data
 
+import androidx.collection.arrayMapOf
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -28,7 +29,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     suspend fun saveOcr(ocr: Ocr){
         dataStore.edit { preferences ->
-            preferences[WORD_KEY] = ocr.word.toString()
+            preferences[TEXT_KEY] = ocr.text
         }
     }
 
@@ -58,7 +59,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val NAME_KEY = stringPreferencesKey("name")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val STATE_KEY = booleanPreferencesKey("state")
-        private val WORD_KEY = stringPreferencesKey("word")
+        private val TEXT_KEY = stringPreferencesKey("text")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {
