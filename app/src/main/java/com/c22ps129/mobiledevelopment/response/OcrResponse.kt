@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class OcrResponse (
     @field:SerializedName("prediction")
-    val prediction: List<ListPredict>
+    val prediction: ListPredict
 )
 
 data class ListPredict(

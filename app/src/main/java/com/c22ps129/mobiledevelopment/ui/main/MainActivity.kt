@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part =MultipartBody.Part.createFormData(
-                "photo",
+                "img",
                 file.name,
                 requestImageFile
             )
@@ -81,13 +81,13 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful){
                         val responseBody = response.body()
                         if (responseBody != null){
-//                            mainViewModel.saveOcr(Ocr(
-//
-//                            ))
+                            mainViewModel.saveOcr(Ocr(
+                                responseBody.prediction.box,
+                                responseBody.prediction.text
+                            ))
                         }
                     }
                 }
-
                 override fun onFailure(call: Call<OcrResponse>, t: Throwable) {
                     Toast.makeText(this@MainActivity, getString(R.string.failedRetrofit), Toast.LENGTH_SHORT).show()
                 }
