@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField 'String', 'BASE_URL', '"https://mag-it-service-5xbbt6jyda-et.a.run.app/api/users/"'
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
