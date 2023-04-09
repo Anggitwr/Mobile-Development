@@ -5,6 +5,14 @@
 A mobile application providing predicting the coordinates of all texts exist in an image and recognizing the value of all the texts detected by the text detection model 
 by <a href="https://github.com/XSmas29/OCR-Flask">Machine Learning</a> that can be use for farsighted people in reading.
 
+<p align="center">
+<img src="screenshot/onboard.png" height="400">
+<img src="screenshot/signup.png" height="400">
+<img src="screenshot/login.png" height="400">
+<img src="screenshot/home.png" height="400">
+
+</p>
+
 ## Features
 In this application you can:
 * Detecting the word from the image that user upload
